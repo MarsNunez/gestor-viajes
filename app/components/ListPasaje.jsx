@@ -1,39 +1,32 @@
-const List = ({ cheque, deleteCheque }) => {
+const ListPasaje = ({ cheque, deleteCheque }) => {
   return (
     <div className="w-full max-w-[700px] bg-white rounded-lg shadow-lg mx-auto mt-20">
       <div className="py-6 px-10 text-lg">
         <h2 className="text-center mb-5 text-xl">
-          BANCO: <span className="font-bold">BBVA</span>
+          Nro de viaje: <span className="font-bold">{cheque.id + 1}</span>
         </h2>
         <div className="flex gap-36">
           <div className="flex flex-col">
             <p className="inline-block font-bold">
-              ID Cheque: <span className="font-normal">{cheque.idCheque}</span>
+              Nombre: <span className="font-normal">{cheque.nombre}</span>
             </p>
             <p className="inline-block font-bold">
-              Fecha Emición: <span className="font-normal">{cheque.fecha}</span>
+              Fecha: <span className="font-normal">{cheque.fecha}</span>
             </p>
             <p className="inline-block font-bold">
-              DNI Emisor: <span className="font-normal">{cheque.emisor}</span>
+              Destino: <span className="font-normal">{cheque.destino}</span>
             </p>
           </div>
           <div className="flex flex-col">
             <p className="inline-block font-bold">
-              ID Banco: <span className="font-normal">{cheque.idBanco}</span>
-            </p>
-            <p className="inline-block font-bold">
               Estado:{" "}
               <span
                 className={`font-normal ${
-                  cheque.estado == "true" ? "text-blue-700" : "text-red-700"
+                  cheque.estado == "1" ? "text-blue-700" : "text-red-700"
                 }`}
               >
-                {cheque.estado == "true" ? "Concretado" : "En Progreso"}
+                {cheque.estado == "1" ? "Concretado" : "En Progreso"}
               </span>
-            </p>
-            <p className="inline-block font-bold">
-              DNI Receptor:{" "}
-              <span className="font-normal">{cheque.receptor}</span>
             </p>
           </div>
         </div>
@@ -50,4 +43,4 @@ const List = ({ cheque, deleteCheque }) => {
   );
 };
 
-export default List;
+export default ListPasaje;

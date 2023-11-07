@@ -2,14 +2,12 @@
 
 import { useState } from "react";
 
-const Form = ({ createCheque }) => {
+const FormPasaje = ({ createCheque }) => {
   const [listado, setListado] = useState({
-    idCheque: "",
+    nombre: "",
     fecha: "",
-    receptor: "",
-    idBanco: "",
     estado: "",
-    emisor: "",
+    destino: "",
   });
 
   const [id, setId] = useState(0);
@@ -21,28 +19,24 @@ const Form = ({ createCheque }) => {
     });
   };
 
-  const { idCheque, fecha, receptor, emisor, idBanco, estado } = listado;
+  const { nombre, fecha, destino, estado } = listado;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("asdsa");
 
     // ID
-
     setId(id + 1);
     listado.id = id;
 
-    // Create Appointment
+    // Crear cheque
     createCheque(listado);
 
-    // Reset Form
+    // Reset FormPasaje
     setListado({
-      idCheque: "",
+      nombre: "",
       fecha: "",
-      receptor: "",
-      idBanco: "",
       estado: "",
-      emisor: "",
+      destino: "",
     });
   };
 
@@ -50,20 +44,20 @@ const Form = ({ createCheque }) => {
     <form onSubmit={handleSubmit}>
       <div className="px-4 py-6 pt-7 text-white text-lg rounded-lg border w-[500px] flex justify-center flex-col gap-6">
         <div className="flex justify-between">
-          <label htmlFor="idCheque" className="inline-block">
-            ID Cheque:
+          <label htmlFor="nombre" className="inline-block">
+            Nombre:
           </label>
           <input
             type="text"
-            id="idCheque"
-            name="idCheque"
+            id="nombre"
+            name="nombre"
             onChange={handleChange}
-            value={idCheque}
+            value={nombre}
           />
         </div>
         <div className="flex justify-between">
           <label htmlFor="fecha" className="inline-block">
-            Fecha Emicion:
+            Fecha:
           </label>
           <input
             type="date"
@@ -74,44 +68,20 @@ const Form = ({ createCheque }) => {
           />
         </div>
         <div className="flex justify-between">
-          <label htmlFor="dni" className="inline-block">
-            DNI Receptor:
+          <label htmlFor="destino" className="inline-block">
+            Destino:
           </label>
           <input
             type="text"
-            id="dni"
-            name="receptor"
+            id="destino"
+            name="destino"
             onChange={handleChange}
-            value={receptor}
+            value={destino}
           />
         </div>
         <div className="flex justify-between">
-          <label htmlFor="emisor" className="inline-block">
-            DNI Emisor:
-          </label>
-          <input
-            type="text"
-            id="emisor"
-            name="emisor"
-            onChange={handleChange}
-            value={emisor}
-          />
-        </div>
-        <div className="flex justify-between">
-          <label htmlFor="idBanco" className="inline-block">
-            ID Banco:
-          </label>
-          <input
-            type="text"
-            id="idBanco"
-            name="idBanco"
-            onChange={handleChange}
-            value={idBanco}
-          />
-        </div>
-        {/* <div className="flex justify-between">
           <label htmlFor="estado" className="inline-block">
-            Estado:
+            Estado (1 - 2):
           </label>
           <input
             type="text"
@@ -120,13 +90,6 @@ const Form = ({ createCheque }) => {
             onChange={handleChange}
             value={estado}
           />
-        </div> */}
-        <div className="flex justify-between">
-          <label>Estado:</label>
-          <select name="estado" onChange={handleChange}>
-            <option value={true}>Concretado</option>
-            <option value={false}>En progreso</option>
-          </select>
         </div>
         <button
           type="submit"
@@ -140,4 +103,4 @@ const Form = ({ createCheque }) => {
   );
 };
 
-export default Form;
+export default FormPasaje;
